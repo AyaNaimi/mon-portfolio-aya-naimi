@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+"build": "next build",
+"start": "next start"
     "dev": "concurrently \"next dev\" \"json-server --watch projects.json --port 3001\" \"json-server --watch messages.json --port 3002\"",
     "json-server": "json-server --watch projects.json --port 3001",
     "json-server-messages": "json-server --watch messages.json --port 3002",
