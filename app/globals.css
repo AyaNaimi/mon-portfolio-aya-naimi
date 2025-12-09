@@ -1,0 +1,660 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+/* @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Russo+One&display=swap'); */
+
+@import url("https://fonts.googleapis.com/css2?family=Ultra&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Added Playfair and Poppins font variables */
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Modern vibrant color palette - Light theme */
+  --background: oklch(0.99 0.005 260);
+  --foreground: oklch(0.12 0.02 260);
+  --card: oklch(0.99 0.005 260 / 0.8);
+  --card-foreground: oklch(0.12 0.02 260);
+  --popover: oklch(0.99 0.005 260 / 0.95);
+  --popover-foreground: oklch(0.12 0.02 260);
+  --primary: oklch(0.62 0.18 295); /* Vibrant Violet */
+  --primary-foreground: oklch(0.99 0.005 260);
+  --secondary: oklch(0.70 0.16 195); /* Bright Cyan */
+  --secondary-foreground: oklch(0.12 0.02 260);
+  --muted: oklch(0.94 0.02 260);
+  --muted-foreground: oklch(0.42 0.04 260);
+  --accent: oklch(0.65 0.20 310); /* Magenta */
+  --accent-foreground: oklch(0.99 0.005 260);
+  --destructive: oklch(0.62 0.22 15);
+  --destructive-foreground: oklch(0.99 0.005 260);
+  --border: oklch(0.87 0.03 260 / 0.4);
+  --input: oklch(0.95 0.02 260);
+  --ring: oklch(0.62 0.18 295 / 0.6);
+  --chart-1: oklch(0.62 0.18 295);
+  --chart-2: oklch(0.70 0.16 195);
+  --chart-3: oklch(0.65 0.20 310);
+  --chart-4: oklch(0.75 0.14 170);
+  --chart-5: oklch(0.80 0.12 45);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.98 0.01 260 / 0.9);
+  --sidebar-foreground: oklch(0.12 0.02 260);
+  --sidebar-primary: oklch(0.62 0.18 295);
+  --sidebar-primary-foreground: oklch(0.99 0.005 260);
+  --sidebar-accent: oklch(0.70 0.16 195);
+  --sidebar-accent-foreground: oklch(0.12 0.02 260);
+  --sidebar-border: oklch(0.87 0.03 260 / 0.4);
+  --sidebar-ring: oklch(0.62 0.18 295 / 0.6);
+  --font-heading: "Ultra", sans-serif;
+}
+
+.dark {
+  /* Modern dark theme with vibrant colors */
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.94 0.01 260);
+  --card: oklch(0.08 0.02 260 / 0.9);
+  --card-foreground: oklch(0.94 0.01 260);
+  --popover: oklch(0.08 0.02 260 / 0.95);
+  --popover-foreground: oklch(0.94 0.01 260);
+  --primary: oklch(0.72 0.22 295); /* Vibrant Violet */
+  --primary-foreground: oklch(0.08 0.02 260);
+  --secondary: oklch(0.80 0.18 195); /* Bright Cyan */
+  --secondary-foreground: oklch(0.08 0.02 260);
+  --muted: oklch(0.18 0.03 260);
+  --muted-foreground: oklch(0.68 0.04 260);
+  --accent: oklch(0.75 0.24 310); /* Magenta */
+  --accent-foreground: oklch(0.08 0.02 260);
+  --destructive: oklch(0.65 0.25 15);
+  --destructive-foreground: oklch(0.94 0.01 260);
+  --border: oklch(0.22 0.04 260);
+  --input: oklch(0.18 0.03 260);
+  --ring: oklch(0.72 0.22 295 / 0.7);
+  --chart-1: oklch(0.72 0.22 295);
+  --chart-2: oklch(0.80 0.18 195);
+  --chart-3: oklch(0.75 0.24 310);
+  --chart-4: oklch(0.85 0.16 170);
+  --chart-5: oklch(0.90 0.14 45);
+  --sidebar: oklch(0.12 0.02 260);
+  --sidebar-foreground: oklch(0.94 0.01 260);
+  --sidebar-primary: oklch(0.72 0.22 295);
+  --sidebar-primary-foreground: oklch(0.08 0.02 260);
+  --sidebar-accent: oklch(0.80 0.18 195);
+  --sidebar-accent-foreground: oklch(0.08 0.02 260);
+  --sidebar-border: oklch(0.22 0.04 260);
+  --sidebar-ring: oklch(0.72 0.22 295 / 0.7);
+}
+
+@theme inline {
+  --font-playfair: var(--font-playfair);
+  --font-poppins: var(--font-poppins);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    /* Ajoute un fond dégradé vertical utilisant les variables CSS */
+    background: linear-gradient(
+      to bottom,
+      var(--background) 0%,
+      color-mix(in srgb, var(--background) 96%, transparent) 60%,
+      var(--background) 100%
+    );
+    inset: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x:hidden;
+  }
+
+  /* Updated heading styles to use Playfair Display */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair font-bold ;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: var(--font-poppins), sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  body.smooth-cursor-enabled,
+  body.smooth-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+/* Added glassmorphism and gradient utilities */
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
+  }
+
+  .gradient-violet-cyan {
+    background: linear-gradient(135deg, oklch(0.62 0.18 295), oklch(0.70 0.16 195));
+  }
+
+  .gradient-violet-cyan-dark {
+    background: linear-gradient(135deg, oklch(0.72 0.22 295), oklch(0.80 0.18 195));
+  }
+
+  .gradient-vibrant {
+    background: linear-gradient(135deg, oklch(0.62 0.18 295), oklch(0.65 0.20 310), oklch(0.70 0.16 195));
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, oklch(0.62 0.18 295) 0%, oklch(0.65 0.20 310) 50%, oklch(0.70 0.16 195) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  .text-gradient-rainbow {
+    background: linear-gradient(135deg, oklch(0.62 0.18 295), oklch(0.65 0.20 310), oklch(0.70 0.16 195), oklch(0.75 0.14 170));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-tilt {
+    transition: transform 0.3s ease;
+  }
+
+  .animate-tilt:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+  }
+
+  /* Modern glassmorphism effects */
+  .glass-morphism {
+    @apply backdrop-blur-lg bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-morphism-strong {
+    @apply backdrop-blur-xl bg-white/30 dark:bg-black/30 border border-white/40 dark:border-white/20;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Neon glow effects */
+  .neon-glow {
+    box-shadow: 0 0 20px oklch(0.62 0.18 295 / 0.3), 0 0 40px oklch(0.70 0.16 195 / 0.2);
+  }
+
+  .neon-glow-text {
+    text-shadow: 0 0 10px oklch(0.62 0.18 295 / 0.5), 0 0 20px oklch(0.70 0.16 195 / 0.3);
+  }
+
+  /* Vibrant hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Modern gradient borders */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, oklch(0.62 0.18 295), oklch(0.70 0.16 195));
+    padding: 2px;
+    border-radius: calc(var(--radius) + 2px);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--background);
+    border-radius: var(--radius);
+    z-index: -1;
+  }
+
+
+
+
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+/* Subtle pattern for sections */
+.pattern-subtle {
+  background-image: 
+    linear-gradient(90deg, transparent 74px, color-mix(in oklch, var(--accent) 20%, transparent) 75px, color-mix(in oklch, var(--accent) 20%, transparent) 76px, transparent 77px),
+    linear-gradient(0deg, transparent 74px, color-mix(in oklch, var(--secondary) 15%, transparent) 75px, color-mix(in oklch, var(--secondary) 15%, transparent) 76px, transparent 77px);
+  background-size: 75px 75px, 75px 75px;
+  opacity: 0.4;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Enhanced perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+/* Advanced glow effects */
+.neon-glow-intense {
+  box-shadow: 
+    0 0 20px oklch(0.62 0.18 295 / 0.4),
+    0 0 40px oklch(0.70 0.16 195 / 0.3),
+    0 0 60px oklch(0.65 0.20 310 / 0.2);
+}
+
+/* Improved glassmorphism variations */
+.glass-morphism-premium {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   PROGRESS BAR PATTERNS
+   ======================================== */
+
+/* Animated striped pattern */
+.progress-pattern-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.3) 10px,
+    rgba(255, 255, 255, 0.3) 20px
+  );
+  background-size: 200% 200%;
+  animation: stripes-move 3s linear infinite;
+}
+
+/* Dotted pattern */
+.progress-pattern-dots {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-position: 0 0, 7.5px 7.5px;
+}
+
+/* Grid pattern */
+.progress-pattern-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Animated gradient wave pattern */
+.progress-pattern-waves {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.3) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.3) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: waves-move 2s linear infinite;
+}
+
+/* Diagonal lines pattern */
+.progress-pattern-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    rgba(255, 255, 255, 0.2) 5px,
+    rgba(255, 255, 255, 0.2) 10px
+  );
+  background-size: 30px 30px;
+}
+
+/* Chevron pattern */
+.progress-pattern-chevron {
+  background-image: 
+    linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.2) 75%);
+  background-size: 16px 16px;
+}
+
+/* Pulsing glow pattern */
+.progress-pattern-glow {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Moving gradient pattern */
+.progress-pattern-moving-gradient {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: gradient-sweep 2s ease-in-out infinite;
+}
+
+/* Keyframe animations for progress patterns */
+@keyframes stripes-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes waves-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes gradient-sweep {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dots-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes chevron-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced category-specific animations */
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes particles-float {
+  0%, 100% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 10px -10px, -5px 5px;
+  }
+}
+
+@keyframes waves-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+@keyframes orbit-glow {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Progressive loading animation for bars */
+.progress-bar-animate {
+  animation: progress-fill 2s ease-out;
+}
+
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--progress-width);
+  }
+}
+
+/* Enhanced progress bar container with pattern support */
+.progress-bar-patterned {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-patterned::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Different pattern variants for variety - All using simple waves-flow animation */
+.progress-pattern-1,
+.progress-pattern-2,
+.progress-pattern-3,
+.progress-pattern-4 {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
+  background-size: 20px 20px;
+  animation: waves-flow 3s linear infinite;
+}
+
+/* Category-specific patterns with simplified effects */
+.progress-frontend {
+  background: linear-gradient(90deg, #2563EB, #1D4ED8);
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
+  background-size: 20px 20px;
+  box-shadow: 
+    0 0 5px rgba(37, 99, 235, 0.2);
+  animation: waves-flow 3s linear infinite;
+}
+
+.progress-backend {
+  background: linear-gradient(90deg, #10B981, #059669);
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
+  background-size: 20px 20px;
+  box-shadow: 
+    0 0 5px rgba(16, 185, 129, 0.2);
+  animation: waves-flow 3s linear infinite;
+}
+
+.progress-database {
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
+  background-size: 20px 20px;
+  box-shadow: 
+    0 0 5px rgba(245, 158, 11, 0.2);
+  animation: waves-flow 3s linear infinite;
+}
+
+.progress-devops {
+  background: linear-gradient(90deg, #8B5CF6, #7C3AED);
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
+  background-size: 20px 20px;
+  box-shadow: 
+    0 0 5px rgba(139, 92, 246, 0.2);
+  animation: waves-flow 3s linear infinite;
+}
+
+
+
+
+#contact-form{
+  border: 2px dashed var(--primary);
+}
+
