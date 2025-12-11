@@ -39,10 +39,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Static pages (if any are added later)
-  const staticPages = [
-    // Add future static pages here
+ const staticPages = [
+    {
+      url: `${baseUrl}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    },
   ]
-
   // Admin pages (lower priority, internal use)
   const adminPages = [
     {
@@ -55,6 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...mainPages,
+
     ...staticPages,
     ...adminPages,
   ]

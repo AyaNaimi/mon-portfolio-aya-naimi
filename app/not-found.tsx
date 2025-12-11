@@ -73,13 +73,3 @@ export default function NotFound() {
     </main>
   )
 }
-
-// Generate metadata for SEO
-export const metadata = {
-  title: "404 - Page non trouvée | Aya Naimi Portfolio",
-  description: "La page que vous recherchez n'existe pas. Retournez au portfolio d'Aya Naimi pour découvrir ses projets et compétences en développement web.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-}
