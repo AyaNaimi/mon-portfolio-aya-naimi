@@ -40,8 +40,8 @@ export function Navigation() {
       aria-label="Navigation principale"
       role="navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-1 px-3">
+      <div className="container-responsive">
+        <div className="flex justify-between items-center py-2 px-2 sm:px-3">
           
 
           {/* Desktop Nav */}

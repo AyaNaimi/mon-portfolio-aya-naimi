@@ -1,0 +1,135 @@
+/* 3D Ribbon Effects and Animations */
+
+/* Glow animation for the ribbon */
+@keyframes ribbonGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.6), 0 0 40px rgba(147, 51, 234, 0.3);
+  }
+}
+
+/* Floating animation */
+@keyframes ribbonFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Pulse glow for certified badge */
+@keyframes certifiedPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(147, 51, 234, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.8));
+  }
+}
+
+/* 3D Depth Effect */
+.ribbon-3d-container {
+  perspective: 1000px;
+}
+
+.ribbon-3d-main {
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ribbon-3d-main:hover {
+  transform: translateY(-2px) rotateX(5deg);
+}
+
+/* Enhanced shadow effects */
+.ribbon-3d-shadow {
+  filter: blur(8px);
+  opacity: 0.3;
+}
+
+/* Gradient border animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ribbon-gradient-border {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Premium shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.ribbon-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Achievement sparkle effect */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 1.5s infinite;
+}
+
+.sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 10%; right: 30%; animation-delay: 0.3s; }
+.sparkle:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 0.6s; }
+.sparkle:nth-child(4) { bottom: 15%; right: 20%; animation-delay: 0.9s; }
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ribbon-3d-main {
+    transform: scale(0.9);
+  }
+  
+  .ribbon-3d-main:hover {
+    transform: scale(0.95);
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .ribbon-3d-shadow {
+    opacity: 0.5;
+  }
+}

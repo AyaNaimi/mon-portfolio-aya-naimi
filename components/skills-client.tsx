@@ -23,6 +23,7 @@ import {
   SiGitlab,
 } from "react-icons/si"
 
+/* ================= TYPES ================= */
 interface Skill {
   id: string
   category: string
@@ -35,51 +36,47 @@ interface SkillsClientProps {
   skillsData: Record<string, Skill[]>
 }
 
-// ============================
-// ⭐ CUSTOM PROGRESS BAR AVEC PATTERN
-// ============================
-function CustomProgress({ value, color, category }: { value: number; color?: string; category?: string }) {
-  // Mapping des catégories vers leurs patterns CSS
-  const getPatternClass = (category: string) => {
-    switch (category) {
-      case 'Frontend': return 'progress-pattern-1'
-      case 'Backend': return 'progress-pattern-2'
-      case 'Base de données': return 'progress-pattern-3'
-      case 'DevOps & Cloud': return 'progress-pattern-4'
-      default: return 'progress-pattern-1'
-    }
-  }
-
-  // Mapping des catégories vers leurs classes de gradient
+/* ================= CUSTOM PROGRESS ================= */
+function CustomProgress({
+  value,
+  color,
+  category,
+}: {
+  value: number
+  color?: string
+  category?: string
+}) {
   const getProgressClass = (category: string) => {
     switch (category) {
-      case 'Frontend': return 'progress-frontend'
-      case 'Backend': return 'progress-backend'
-      case 'Base de données': return 'progress-database'
-      case 'DevOps & Cloud': return 'progress-devops'
-      default: return ''
+      case "Frontend":
+        return "progress-frontend"
+      case "Backend":
+        return "progress-backend"
+      case "Base de données":
+        return "progress-database"
+      case "DevOps & Cloud":
+        return "progress-devops"
+      default:
+        return ""
     }
   }
 
-  const patternClass = category ? getPatternClass(category) : ''
-  const progressClass = category ? getProgressClass(category) : ''
-
   return (
-    <div className="w-full h-4 bg-gray-200 rounded-full relative overflow-hidden progress-bar-patterned">
+    <div className="relative w-full h-4 rounded-full overflow-hidden bg-black/10 backdrop-blur-md">
       <div
-        className={`h-full rounded-full transition-all duration-1000 ${progressClass} ${patternClass}`}
+        className={`h-full rounded-full transition-all duration-1000 ${getProgressClass(
+          category || ""
+        )} progress-bar-patterned`}
         style={{
           width: `${value}%`,
-          backgroundColor: color || "#2563EB",
+          backgroundColor: color,
         }}
-      ></div>
+      />
     </div>
   )
 }
 
-// ===============================
-// ICONES DES CATÉGORIES
-// ===============================
+/* ================= CATEGORY CONFIG ================= */
 const categoryIcons: Record<string, React.ReactNode> = {
   Frontend: <Code2 className="h-6 w-6" />,
   Backend: <Server className="h-6 w-6" />,
@@ -87,17 +84,28 @@ const categoryIcons: Record<string, React.ReactNode> = {
   "DevOps & Cloud": <Cloud className="h-6 w-6" />,
 }
 
-// Couleurs par catégorie
 const categoryColors: Record<string, string> = {
-  Frontend: "#2563EB",       // bleu vif
-  Backend: "#10B981",        // vert lumineux
-  "Base de données": "#F59E0B", // orange chaud
-  "DevOps & Cloud": "#8B5CF6",  // violet vibrant
+  Frontend: "#2563EB",
+  Backend: "#10B981",
+  "Base de données": "#F59E0B",
+  "DevOps & Cloud": "#EF4444",
 }
 
-// ===============================
-// TECH LOGOS POUR LogoLoop
-// ===============================
+/* ================= COLOR HELPERS ================= */
+const getCardBackgroundColor = (category: string, index: number) => {
+  const base = categoryColors[category] || "#2563EB"
+  const opacity = 0.08 + (index % 4) * 0.04
+  return `${base}${Math.round(opacity * 255)
+    .toString(16)
+    .padStart(2, "0")}`
+}
+
+const getCardBorderColor = (category: string) => {
+  const base = categoryColors[category] || "#2563EB"
+  return `${base}55`
+}
+
+/* ================= LOGOS ================= */
 const techLogos = [
   { node: <SiReact className="h-10 w-10 text-[#61DAFB]" />, title: "React" },
   { node: <SiNextdotjs className="h-10 w-10" />, title: "Next.js" },
@@ -115,15 +123,12 @@ const techLogos = [
   { node: <SiGitlab className="h-10 w-10 text-[#FC6D26]" />, title: "GitLab" },
 ]
 
-// ===============================
-// ⭐ MAIN COMPONENT
-// ===============================
+/* ================= MAIN COMPONENT ================= */
 export function SkillsClient({ skillsData }: SkillsClientProps) {
   const [isVisible, setIsVisible] = useState(false)
-  const [animatedSkills, setAnimatedSkills] = useState<{ [key: string]: number }>({})
+  const [animatedSkills, setAnimatedSkills] = useState<Record<string, number>>({})
   const sectionRef = useRef<HTMLElement>(null)
 
-  // Show default skills if none from database
   const defaultSkillsData: Record<string, Skill[]> = {
     Frontend: [
       { id: "1", category: "Frontend", name: "React", level: 90, order: 1 },
@@ -146,99 +151,153 @@ export function SkillsClient({ skillsData }: SkillsClientProps) {
     ],
   }
 
-  const displaySkillsData = Object.keys(skillsData).length > 0 ? skillsData : defaultSkillsData
-  const displayCategories = Object.keys(displaySkillsData)
+  const data = Object.keys(skillsData).length ? skillsData : defaultSkillsData
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          setTimeout(() => {
-            const updated: { [key: string]: number } = {}
-            Object.values(displaySkillsData).forEach((cat) => {
-              cat.forEach((s) => (updated[s.name] = s.level))
-            })
-            setAnimatedSkills(updated)
-          }, 500)
+          const values: Record<string, number> = {}
+          Object.values(data).flat().forEach((s) => (values[s.name] = s.level))
+          setTimeout(() => setAnimatedSkills(values), 400)
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.2 }
     )
 
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
-  }, [displaySkillsData])
+  }, [data])
 
   return (
-    <section ref={sectionRef} id="skills" className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* TITRE */}
-        <div className="text-center mb-16">
-          <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 font-playfair ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            Mes compétences
-          </h2>
+    <section ref={sectionRef} id="skills" className="py-24 relative">
+     <div className="max-w-7xl mx-auto px-6">
+{/* ================= TITRE ULTRA PREMIUM ================= */}
+<div className="relative text-center mb-24">
+  {/* AURA SOFT */}
+  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+    <div
+      className="
+        w-[480px] h-[160px]
+        rounded-full
+        bg-gradient-to-r
+        from-indigo-500/20
+        via-sky-400/25
+        to-indigo-500/20
+        blur-[110px]
+        animate-aura-slow
+      "
+    />
+  </div>
+
+  {/* TITRE */}
+  <h2
+    className="
+      relative
+      inline-block
+      font-orbitron
+      text-4xl
+      md:text-5xl
+      lg:text-6xl
+      tracking-[0.28em]
+      uppercase
+      text-transparent
+      bg-clip-text
+      bg-gradient-to-r
+      from-slate-900
+      via-indigo-500
+      to-slate-900
+      dark:from-slate-100
+      dark:via-indigo-400
+      dark:to-slate-100
+      animate-title-float
+    "
+  >
+    Mes Compétences
+
+    {/* SCRIBBLE DESSINÉ */}
+    <svg
+      className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
+      viewBox="0 0 320 40"
+      fill="none"
+    >
+      <path
+        d="M10 28 C45 20, 90 34, 135 26 C180 18, 230 32, 270 25 C290 22, 305 30, 315 27"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="scribble-draw"
+      />
+    </svg>
+  </h2>
+
+  {/* LIGNE TECH FINE */}
+  <div className="mt-10 flex justify-center">
+    <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
+      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
+    </div>
+  </div>
+
+  {/* SOUS-TITRE */}
+  <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+    Technologies & Expertise
+  </p>
+</div>
+
+
+        <div className="h-32 mb-20">
+          <LogoLoop logos={techLogos} speed={120} fadeOut scaleOnHover />
         </div>
 
-        {/* LOGO LOOP */}
-        <div
-          className={`transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          
-
-          <div className="relative h-32 max-w-5xl mx-auto">
-            <LogoLoop
-              logos={techLogos}
-              speed={120}
-              direction="left"
-              logoHeight={48}
-              gap={40}
-              hoverSpeed={10}
-              fadeOut
-              scaleOnHover
-            />
-          </div>
-        </div>
-
-        {/* GRILLE DES COMPÉTENCES */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-          {displayCategories.map((category, catIndex) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {Object.keys(data).map((category, index) => (
             <Card
               key={category}
-              className={`glass p-6 transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${300 + catIndex * 100}ms` }}
+              className="relative p-6 rounded-2xl overflow-hidden backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
+              style={{
+                backgroundColor: getCardBackgroundColor(category, index),
+                border: `1px solid ${getCardBorderColor(category)}`,
+                boxShadow: `0 0 40px ${categoryColors[category]}30`,
+              }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-primary/20 text-primary">
+              {/* GRID TECH */}
+              <div className="absolute inset-0 opacity-[0.07] pointer-events-none">
+                <svg width="100%" height="100%">
+                  <defs>
+                    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
+
+              {/* HEADER */}
+              <div className="flex items-center gap-3 mb-6 relative z-10">
+                <div
+                  className="p-3 rounded-xl relative"
+                  style={{ backgroundColor: `${categoryColors[category]}33` }}
+                >
                   {categoryIcons[category]}
                 </div>
                 <h3 className="text-xl font-semibold">{category}</h3>
               </div>
 
-              <div className="space-y-5">
-                {displaySkillsData[category].map((skill, idx) => (
-                  <div
-                    key={skill.id}
-                    className={`transition-all duration-700 ${
-                      isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
-                    }`}
-                    style={{ transitionDelay: `${500 + idx * 80}ms` }}
-                  >
-                    <div className="flex justify-between text-sm mb-2">
+              {/* SKILLS */}
+              <div className="space-y-5 relative z-10">
+                {data[category].map((skill) => (
+                  <div key={skill.id}>
+                    <div className="flex justify-between mb-2 text-sm">
                       <span>{skill.name}</span>
-                      <Badge variant="outline">{skill.level}%</Badge>
+                      <Badge className="bg-white/70">{skill.level}%</Badge>
                     </div>
-
-                    {/* Barre de progression avec pattern */}
-                    <CustomProgress value={animatedSkills[skill.name] || 0} color={categoryColors[category]} category={category} />
+                    <CustomProgress
+                      value={animatedSkills[skill.name] || 0}
+                      color={categoryColors[category]}
+                      category={category}
+                    />
                   </div>
                 ))}
               </div>

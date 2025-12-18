@@ -75,29 +75,83 @@ export function ProjectsSection() {
 
   return (
     <section ref={sectionRef} id="projects" className="py-20 relative" data-sr>
-      {/* Original minimalist background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/96 to-background" />
-      <div className="absolute inset-0 opacity-25">
-        <div className="pattern-subtle"></div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16" data-sr>
-          <h2
-            className={`text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl mb-6 text-foreground transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       
+       
+       
+       {/* ================= TITRE ULTRA PREMIUM ================= */}
+<div className="relative text-center mb-24">
+  {/* AURA SOFT */}
+  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+    <div
+      className="
+        w-[480px] h-[160px]
+        rounded-full
+        bg-gradient-to-r
+        from-indigo-500/20
+        via-sky-400/25
+        to-indigo-500/20
+        blur-[110px]
+        animate-aura-slow
+      "
+    />
+  </div>
+
+  {/* TITRE */}
+  <h2
+    className="
+      relative
+      inline-block
+      font-orbitron
+      text-4xl
+      md:text-5xl
+      lg:text-6xl
+      tracking-[0.28em]
+      uppercase
+      text-transparent
+      bg-clip-text
+      bg-gradient-to-r
+      from-slate-900
+      via-indigo-500
+      to-slate-900
+      dark:from-slate-100
+      dark:via-indigo-400
+      dark:to-slate-100
+      animate-title-float
+    "
+  >
             Mes projets
-          </h2>
-          <div className="w-20 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent mx-auto mb-8"></div>
-          <p
-            className={`text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            Découvrez une sélection de mes réalisations, des applications web modernes aux APIs robustes.
-          </p>
-        </div>
+
+    {/* SCRIBBLE DESSINÉ */}
+    <svg
+      className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
+      viewBox="0 0 320 40"
+      fill="none"
+    >
+      <path
+        d="M10 28 C45 20, 90 34, 135 26 C180 18, 230 32, 270 25 C290 22, 305 30, 315 27"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="scribble-draw"
+      />
+    </svg>
+  </h2>
+
+  {/* LIGNE TECH FINE */}
+  <div className="mt-10 flex justify-center">
+    <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
+      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
+    </div>
+  </div>
+
+  {/* SOUS-TITRE */}
+  <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+  Découvrez une sélection de mes réalisations, des applications web modernes aux APIs robustes.
+  </p>
+</div>
+
 
         {/* Filter Buttons */}
         <div
@@ -112,7 +166,7 @@ export function ProjectsSection() {
               onClick={() => setSelectedCategory(category)}
               className={`border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 ${
                 selectedCategory === category
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  ? "bg-gradient-to-r from-indigo-500/50 to-purple-500/50 text-primary-foreground hover:bg-primary/90"
                   : "hover:bg-primary/10 hover:text-primary"
               }`}
             >
@@ -124,13 +178,11 @@ export function ProjectsSection() {
 
         {/* Featured Projects */}
         <div className="mb-16" data-sr>
-          <h3
-            className={`text-2xl font-bold mb-8 text-foreground transition-all duration-1000 delay-400 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-            }`}
-          >
+        <h3 className="relative inline-block text-2xl font-semibold text-slate-900 dark:text-slate-100">
             Projets phares
+            <span className="absolute -bottom-2 left-0 h-[2px] w-1/3 bg-gradient-to-r from-indigo-500 to-transparent rounded-full" />
           </h3>
+          <br /><br /><br />
           <div className="grid lg:grid-cols-2 gap-8">
             {filteredProjects
               .filter((project) => project.featured)
@@ -142,7 +194,7 @@ export function ProjectsSection() {
                   }`}
                   style={{ transitionDelay: `${500 + index * 100}ms` }}
                 >
-                  <Card className="border border-border bg-card/95 backdrop-blur-xl overflow-hidden hover:bg-card/100 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <Card className="border border-border bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/100 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
                     <div className="relative overflow-hidden rounded-t-2xl">
                       <Image
                         src={project.image || "/placeholder.svg"}
@@ -154,12 +206,13 @@ export function ProjectsSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                         <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary" className="bg-card/80 border border-border hover:border-primary/50">
+                          <Button size="sm" variant="secondary"                             className="bg-gradient-to-r from-indigo-400/30 via-purple-400/20 to-transparent border-2 border-indigo-400/60 hover:border-primary ring-2 ring-indigo-200/30 shadow-md transition-all duration-300 backdrop-blur-md hover:bg-primary/10 hover:text-primary"
+                          >
                             <ExternalLink className="h-4 w-4" />
                           </Button>
                         </a>
                         <a href={project.github_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary" className="bg-card/80 border border-border hover:border-primary/50">
+                          <Button size="sm" variant="secondary"       className="bg-gradient-to-r from-indigo-400/10 via-purple-400/10 to-transparent border-2 border-indigo-400/60 hover:border-primary ring-2 ring-indigo-200/30 shadow-md transition-all duration-300 backdrop-blur-md hover:bg-primary/10 hover:text-primary">
                             <Github className="h-4 w-4" />
                           </Button>
                         </a>
@@ -187,13 +240,11 @@ export function ProjectsSection() {
 
         {/* Other Projects */}
         <div data-sr>
-          <h3
-            className={`text-2xl font-bold mb-8 text-foreground transition-all duration-1000 delay-600 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-            }`}
-          >
+        <h3 className="relative inline-block text-2xl font-semibold text-slate-900 dark:text-slate-100">
             Autres réalisations
+            <span className="absolute -bottom-2 left-0 h-[2px] w-1/4 bg-gradient-to-r from-sky-500 to-transparent rounded-full" />
           </h3>
+   <br /><br /><br />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects
               .filter((project) => !project.featured)
@@ -205,7 +256,7 @@ export function ProjectsSection() {
                   }`}
                   style={{ transitionDelay: `${700 + index * 100}ms` }}
                 >
-                  <Card className="border border-border bg-card/90 backdrop-blur-xl overflow-hidden hover:bg-card/95 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.15}s` }}>
+                  <Card className="border border-border bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/95 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.15}s` }}>
                     <div className="relative overflow-hidden rounded-t-2xl">
                       <Image
                         src={project.image || "/placeholder.svg"}
@@ -262,10 +313,7 @@ export function ProjectsSection() {
           }`}
           data-sr
         >
-          <p className="text-lg text-muted-foreground mb-6">Intéressé par mon travail ?</p>
-          <Button size="lg" className="gradient-violet-cyan text-white hover:opacity-90 transition-opacity">
-            Voir tous mes projets sur GitHub
-          </Button>
+        
         </div>
       </div>
     </section>

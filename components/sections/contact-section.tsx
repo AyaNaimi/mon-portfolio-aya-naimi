@@ -214,7 +214,7 @@ export function ContactSection() {
 
   if (isSubmitted) {
     return (
-      <section ref={sectionRef} id="contact" className="py-20 relative overflow-hidden">
+      <section ref={sectionRef} id="contact" className="pt-32 pb-20 relative overflow-hidden -mt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="animate-bounce mb-8">
@@ -242,28 +242,88 @@ export function ContactSection() {
   }
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 relative overflow-hidden">
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section ref={sectionRef} id="contact" className="pt-32 pb-20 relative overflow-hidden -mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Contactez-moi</span>
           </div>
-          <h2
-            className={`text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl mb-6 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            Une idée de projet ?
-          </h2>
-          <p
-            className={`text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            Discutons de vos besoins et créons quelque chose d'extraordinaire ensemble.
-          </p>
+               
+       {/* ================= TITRE ULTRA PREMIUM ================= */}
+<div className="relative text-center mb-24">
+  {/* AURA SOFT */}
+  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+    <div
+      className="
+        w-[480px] h-[160px]
+        rounded-full
+        bg-gradient-to-r
+        from-indigo-500/20
+        via-sky-400/25
+        to-indigo-500/20
+        blur-[110px]
+        animate-aura-slow
+      "
+    />
+  </div>
+
+  {/* TITRE */}
+  <h2
+    className="
+      relative
+      inline-block
+      font-orbitron
+      text-4xl
+      md:text-5xl
+      lg:text-6xl
+      tracking-[0.28em]
+      uppercase
+      text-transparent
+      bg-clip-text
+      bg-gradient-to-r
+      from-slate-900
+      via-indigo-500
+      to-slate-900
+      dark:from-slate-100
+      dark:via-indigo-400
+      dark:to-slate-100
+      animate-title-float
+    "
+  >
+Une idée de projet ?
+
+    {/* SCRIBBLE DESSINÉ */}
+    <svg
+      className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
+      viewBox="0 0 320 40"
+      fill="none"
+    >
+      <path
+        d="M10 28 C45 20, 90 34, 135 26 C180 18, 230 32, 270 25 C290 22, 305 30, 315 27"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="scribble-draw"
+      />
+    </svg>
+  </h2>
+
+  {/* LIGNE TECH FINE */}
+  <div className="mt-10 flex justify-center">
+    <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
+      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
+    </div>
+  </div>
+
+  {/* SOUS-TITRE */}
+  <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+  Discutons de vos besoins et créons quelque chose d'extraordinaire ensemble.
+  </p>
+</div>
+
+
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -359,7 +419,7 @@ export function ContactSection() {
                 <p className="text-muted-foreground">
                   Fill out the form below to get in touch!
                 </p>
-              
+                
               <form onSubmit={handleSubmit} className="space-y-6 ">
                 {/* Terminal progress indicator */}
                 <div className="mb-6">

@@ -42,12 +42,13 @@ const ParticleField = () => {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-blue-400/30 to-purple-400/30"
+          className="absolute rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: particle.size,
             height: particle.size,
+            background: 'linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--secondary) / 0.3))'
           }}
           animate={{
             y: [0, -20, 0],
@@ -305,7 +306,7 @@ export function PremiumTechShowcase() {
   ]
 
   return (
-    <div className="relative w-full h-[700px] bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20 rounded-3xl overflow-hidden border border-white/10">
+    <div className="relative w-full h-[700px] bg-showcase-premium rounded-3xl overflow-hidden border border-white/10">
       {/* Particle field background */}
       <ParticleField />
       
@@ -367,8 +368,18 @@ export function PremiumTechShowcase() {
       </div>
 
       {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-500/20 to-transparent rounded-full blur-3xl" />
+      <div
+        className="absolute top-0 left-0 w-32 h-32 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, hsl(var(--primary) / 0.2) 0%, transparent 70%)`
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-32 h-32 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, hsl(var(--secondary) / 0.2) 0%, transparent 70%)`
+        }}
+      />
       
       {/* Decorative corners */}
       <div className="absolute top-4 left-4">

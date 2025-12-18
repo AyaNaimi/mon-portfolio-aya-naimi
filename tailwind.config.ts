@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 // all in fixtures is set to tailwind v3 as interims solutions
 
 const config: Config = {
-    darkMode: ["class"],
+    darkMode: "class",
     content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,6 +14,17 @@ const config: Config = {
   	extend: {
       fontFamily: {
         ultra: ["var(--font-ultra)", "sans-serif"],
+        "fira-code": ["var(--font-fira-code)", "monospace"],
+        "jetbrains-mono": ["var(--font-jetbrains-mono)", "monospace"],
+        "exo-2": ["var(--font-exo-2)", "sans-serif"],
+        "rajdhani": ["var(--font-rajdhani)", "sans-serif"],
+        "space-grotesk": ["var(--font-space-grotesk)", "sans-serif"],
+        "ibm-plex-mono": ["var(--font-ibm-plex-mono)", "monospace"],
+        "tech-primary": ["var(--font-jetbrains-mono)", "monospace"],
+        "tech-secondary": ["var(--font-fira-code)", "monospace"],
+        "tech-heading": ["var(--font-exo-2)", "sans-serif"],
+        "tech-display": ["var(--font-rajdhani)", "sans-serif"],
+        "tech-body": ["var(--font-ibm-plex-mono)", "monospace"],
       },
   		colors: {
   			background: 'hsl(var(--background))',

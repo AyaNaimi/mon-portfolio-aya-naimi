@@ -11,7 +11,10 @@ export default async function Home() {
     <>
       <Navigation />
       <main className="min-h-screen" role="main">
+        
+        
         <HeroSection />
+        
         <AboutSectionServer />
         <SkillsSectionServer />
         <CertificatesSection />

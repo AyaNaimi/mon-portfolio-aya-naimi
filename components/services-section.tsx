@@ -39,13 +39,7 @@ const services = [
 export function ServicesSection() {
   return (
     <section id="services" className="py-20 px-6 relative">
-      {/* Vibrant gradient background - Orange to Red */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-red-500/15 to-pink-500/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-red-500/10 via-transparent to-transparent" />
-      <div className="absolute inset-0 opacity-15">
-        <div className="pattern-subtle"></div>
-      </div>
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Mes Services

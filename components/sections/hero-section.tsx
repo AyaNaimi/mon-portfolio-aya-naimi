@@ -161,9 +161,9 @@ export function HeroSection() {
 
   return (
     <header ref={sectionRef} id="hero" className="relative py-24 sm:py-32 overflow-hidden" role="banner">
-      {/* Clean Background */}
-      <div className="absolute inset-0 clean-background z-0">
-        <div className="pattern-overlay"></div>
+      {/* Clean Background with Fade Effect */}
+      <div className="absolute inset-0  z-0 ">
+        <div className="pattern-overlay bg-quantum-grid"></div>
       </div>
       
       <style jsx>{`
@@ -193,18 +193,34 @@ export function HeroSection() {
           );
         }
         
-        .pattern-overlay {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-image: 
-            linear-gradient(90deg, transparent 68px, color-mix(in oklch, var(--accent) 40%, transparent) 69px, color-mix(in oklch, var(--accent) 40%, transparent) 70px, transparent 71px),
-            linear-gradient(0deg, transparent 68px, color-mix(in oklch, var(--secondary) 30%, transparent) 69px, color-mix(in oklch, var(--secondary) 30%, transparent) 70px, transparent 71px);
-          background-size: 70px 70px, 70px 70px;
-          opacity: 0.3;
-        }
+       .pattern-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+  overflow: hidden;
+
+  /* Fade out bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0.2) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0.2) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+ 
+  
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -260,7 +276,9 @@ export function HeroSection() {
               </figcaption>
             </figure>
 
-            <div className="absolute -bottom-6 -right-6 -z-10 h-full w-full rounded-2xl border border-accent/50 bg-accent/15 backdrop-blur-sm transition-all duration-1000 animate-float transform" style={{ animationDelay: "0.5s" }} />
+            <div className="absolute top-4 -right-4 -z-10 h-full w-full rounded-2xl border border-accent/50 bg-accent/15 backdrop-blur-sm transition-all duration-1000 animate-float transform" style={{ animationDelay: "0.5s", height: "100%", // priorité sur 100% de la div parent (relative)
+                maxHeight: "450px", // ~taille lg:w-96 = 24rem = 384px 
+                }} />
           </div>
 
         </div>
@@ -268,3 +286,4 @@ export function HeroSection() {
     </header>
   )
 }
+

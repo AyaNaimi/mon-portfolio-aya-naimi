@@ -6,8 +6,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/toaster"
 import { Suspense } from "react"
 import { SmoothCursor } from "@/components/ui/smooth-cursor"
-import ScrollRevealProvider from "@/components/scroll-reveal-provider"
+import { AdvancedAnimationProvider } from "@/components/advanced-animation-provider"
 import { LoaderWrapper } from "@/components/loader-wrapper"
+import "@/components/ui/advanced-scroll-animations.css"
+import "@/components/ui/styled-titles.css"
 import "./globals.css"
 
 // ✅ Police Google Geist
@@ -102,7 +104,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
- <script
+<script
       dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -209,14 +211,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </noscript>
 
         <Suspense fallback={null}>
-          <ScrollRevealProvider />
-          <SmoothCursor />
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-            <LoaderWrapper>
-              {children}
-              <Toaster />
-            </LoaderWrapper>
-          </ThemeProvider>
+          <AdvancedAnimationProvider>
+            <SmoothCursor />
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+              <LoaderWrapper>
+                {children}
+                <Toaster />
+              </LoaderWrapper>
+            </ThemeProvider>
+          </AdvancedAnimationProvider>
           <Analytics />
         </Suspense>
       </body>

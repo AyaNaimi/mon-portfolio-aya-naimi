@@ -37,9 +37,9 @@ const QuantumConnections = ({ mouseX, mouseY, connections }: {
     <svg className="absolute inset-0 w-full h-full pointer-events-none">
       <defs>
         <linearGradient id="quantum-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.8" />
-          <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#EC4899" stopOpacity="0.4" />
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+          <stop offset="50%" stopColor="hsl(var(--secondary))" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
         </linearGradient>
         <filter id="glow">
           <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -300,11 +300,11 @@ export function QuantumTechPortal() {
   }
 
   return (
-    <div className="relative w-full h-[700px] bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20 rounded-3xl overflow-hidden border border-white/10 backdrop-blur-xl">
+    <div className="relative w-full h-[700px] bg-tech-portal rounded-3xl overflow-hidden border border-white/10 backdrop-blur-xl">
       {/* Arrière-plan quantique */}
       <div className="absolute inset-0">
         {/* Grille quantique */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-20 bg-quantum-grid">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={`h-${i}`}
@@ -416,7 +416,10 @@ export function QuantumTechPortal() {
         <div className="relative">
           {/* Pulsation centrale */}
           <motion.div
-            className="w-24 h-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-2xl"
+            className="w-24 h-24 rounded-full blur-2xl"
+            style={{
+              background: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)))'
+            }}
             animate={{
               scale: [0.8, 1.3, 0.8],
               opacity: [0.4, 0.8, 0.4],
@@ -464,9 +467,24 @@ export function QuantumTechPortal() {
       </motion.div>
 
       {/* Effets lumineux */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-500/30 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-purple-500/30 to-transparent rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-pink-500/20 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
+      <div
+        className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%)`
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, hsl(var(--secondary) / 0.3) 0%, transparent 70%)`
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
+        style={{
+          background: `radial-gradient(circle, hsl(var(--accent) / 0.2) 0%, transparent 70%)`
+        }}
+      />
       
       {/* Titre et description */}
       <motion.div

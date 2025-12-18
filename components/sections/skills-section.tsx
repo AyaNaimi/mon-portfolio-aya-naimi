@@ -94,16 +94,10 @@ export function SkillsSection() {
 
   return (
     <section ref={sectionRef} id="skills" className="py-20 relative">
-      {/* Vibrant gradient background - Cyan to Blue */}
-      <div className="absolute " />
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 via-transparent to-transparent" />
-      <div className="absolute inset-0 opacity-15">
-        <div className="pattern-subtle"></div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className={`text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl mb-6 text-foreground transition-all duration-1000 ${
+            className={`text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl mb-6 text-foreground transition-all duration-1000 font-orbitron ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -124,13 +118,13 @@ export function SkillsSection() {
           {skillCategories.map((category, categoryIndex) => (
             <Card
               key={category.title}
-              className={`border-border bg-card/70 backdrop-blur-sm p-6 hover:bg-card/80 transition-all duration-1000 ${
+              className={`border-white border bg-card/80 backdrop-blur-sm hover:bg-card/90 transition-all duration-1000 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${300 + categoryIndex * 100}ms` }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-primary/20 text-primary">{category.icon}</div>
+                <div className="p-2 rounded-lg bg-blue-500/20 text-blue-600">{category.icon}</div>
                 <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
               </div>
 
@@ -148,7 +142,7 @@ export function SkillsSection() {
                       <span className="text-sm text-muted-foreground">{skill.level}%</span>
                     </div>
                     <div className="w-full h-2 bg-gray-200 rounded-full relative overflow-hidden progress-bar-patterned">
-                      <div 
+                      <div
                         className={`h-full rounded-full transition-all duration-1000 ${
                           categoryIndex === 0 ? 'progress-pattern-1 progress-frontend' :
                           categoryIndex === 1 ? 'progress-pattern-2 progress-backend' :
@@ -169,16 +163,16 @@ export function SkillsSection() {
 
         {/* Tools & Technologies */}
         <div
-          className={`transition-all duration-1000 delay-700 ${
+          className={`transition-all duration-1000 delay-700   ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 rounded-full">
             {tools.map((tool, index) => (
               <Badge
                 key={tool.name}
                 variant="secondary"
-                className={` px-4 py-2 text-sm font-medium hover:bg-primary/20 hover:text-primary transition-all duration-300 cursor-default ${
+                className={` px-4 py-2 text-sm font-medium hover:bg-primary/20 hover:text-primary transition-all duration-300 cursor-default  ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                 }`}
                 style={{ transitionDelay: `${30 + index * 50}ms` }}

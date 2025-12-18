@@ -112,12 +112,7 @@ function ContactSection() {
 
   return (
     <section id="contact" className="py-20 px-6 relative">
-      {/* Minimalist background that harmonizes with hero */}
-      <div className="absolute " />
-      <div className="absolute inset-0 opacity-30">
-        <div className="pattern-subtle"></div>
-      </div>
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl mb-6">
             Contactez-moi
