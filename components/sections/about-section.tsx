@@ -68,9 +68,9 @@ export function AboutSection() {
         w-[480px] h-[160px]
         rounded-full
         bg-gradient-to-r
-        from-indigo-500/20
-        via-sky-400/25
-        to-indigo-500/20
+from-emerald-400
+via-teal-400
+to-cyan-500
         blur-[110px]
         animate-aura-slow
       "

@@ -152,18 +152,18 @@ export function AboutClient({ aboutInfo, timeline }: AboutClientProps) {
 <div className="relative text-center mb-24">
   {/* AURA SOFT */}
   <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-    <div
+    {/* <div
       className="
         w-[480px] h-[160px]
         rounded-full
-        bg-gradient-to-r
-        from-indigo-500/20
-        via-sky-400/25
-        to-indigo-500/20
+       bg-gradient-to-r
+from-emerald-100
+via-teal-100
+to-cyan-100
         blur-[110px]
         animate-aura-slow
       "
-    />
+    /> */}
   </div>
 
   {/* TITRE */}
@@ -179,10 +179,11 @@ export function AboutClient({ aboutInfo, timeline }: AboutClientProps) {
       uppercase
       text-transparent
       bg-clip-text
-      bg-gradient-to-r
-      from-slate-900
-      via-indigo-500
-      to-slate-900
+     bg-gradient-to-r
+from-[#2A1410]
+via-[#C56A3A]
+to-[#2A1410]
+
       dark:from-slate-100
       dark:via-indigo-400
       dark:to-slate-100
