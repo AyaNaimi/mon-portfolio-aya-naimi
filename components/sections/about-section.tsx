@@ -71,7 +71,7 @@ export function AboutSection() {
 from-emerald-400
 via-teal-400
 to-cyan-500
-        blur-[110px]
+        blur-[110px]a
         animate-aura-slow
       "
     />

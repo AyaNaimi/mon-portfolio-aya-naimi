@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/toaster"
 import { Suspense } from "react"
 import { SmoothCursor } from "@/components/ui/smooth-cursor"
-import { AdvancedAnimationProvider } from "@/components/advanced-animation-provider"
 import { LoaderWrapper } from "@/components/loader-wrapper"
 import "@/components/ui/advanced-scroll-animations.css"
 import "@/components/ui/styled-titles.css"
@@ -211,7 +210,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </noscript>
 
         <Suspense fallback={null}>
-          <AdvancedAnimationProvider>
             <SmoothCursor />
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
               <LoaderWrapper>
@@ -219,7 +217,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <Toaster />
               </LoaderWrapper>
             </ThemeProvider>
-          </AdvancedAnimationProvider>
           <Analytics />
         </Suspense>
       </body>

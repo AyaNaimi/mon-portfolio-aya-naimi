@@ -82,48 +82,39 @@ export function ProjectsSection() {
        {/* ================= TITRE ULTRA PREMIUM ================= */}
 <div className="relative text-center mb-24">
   {/* AURA SOFT */}
-  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+  {/* <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
     <div
       className="
-        w-[480px] h-[160px]
+       w-[280px] h-[30px]
         rounded-full
-        bg-gradient-to-r
-        from-indigo-500/20
-        via-sky-400/25
-        to-indigo-500/20
+       bg-gradient-to-r
+from-[#CC561E]
+
+via-[#7D0ECE]
+to-[#CC561E]
         blur-[110px]
         animate-aura-slow
       "
     />
-  </div>
+  </div> */}
 
   {/* TITRE */}
   <h2
-    className="
-      relative
-      inline-block
-      font-orbitron
-      text-4xl
-      md:text-5xl
-      lg:text-6xl
-      tracking-[0.28em]
-      uppercase
-      text-transparent
-      bg-clip-text
-      bg-gradient-to-r
-      from-slate-900
-      via-indigo-500
-      to-slate-900
-      dark:from-slate-100
-      dark:via-indigo-400
-      dark:to-slate-100
-      animate-title-float
-    "
+     className="
+     outline-animated
+     font-orbitron
+     text-5xl md:text-6xl lg:text-7xl
+     uppercase
+     tracking-widest
+     text-center
+   "
+   data-text="Mes Projets"
+
   >
-            Mes projets
+            Mes Projets
 
     {/* SCRIBBLE DESSINÉ */}
-    <svg
+    {/* <svg
       className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
       viewBox="0 0 320 40"
       fill="none"
@@ -136,15 +127,15 @@ export function ProjectsSection() {
         strokeLinejoin="round"
         className="scribble-draw"
       />
-    </svg>
+    </svg> */}
   </h2>
 
   {/* LIGNE TECH FINE */}
-  <div className="mt-10 flex justify-center">
+  {/* <div className="mt-10 flex justify-center">
     <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
     </div>
-  </div>
+  </div> */}
 
   {/* SOUS-TITRE */}
   <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
@@ -166,7 +157,7 @@ export function ProjectsSection() {
               onClick={() => setSelectedCategory(category)}
               className={`border border-border bg-card/60 backdrop-blur-sm transition-all duration-300 ${
                 selectedCategory === category
-                  ? "bg-gradient-to-r from-indigo-500/50 to-purple-500/50 text-primary-foreground hover:bg-primary/90"
+                  ? "bg-[#000] text-[#BF1A1A] border-2 border-[#BF1A1A]/50 hover:bg-[#AA2B1D]/20"
                   : "hover:bg-primary/10 hover:text-primary"
               }`}
             >
@@ -180,7 +171,7 @@ export function ProjectsSection() {
         <div className="mb-16" data-sr>
         <h3 className="relative inline-block text-2xl font-semibold text-slate-900 dark:text-slate-100">
             Projets phares
-            <span className="absolute -bottom-2 left-0 h-[2px] w-1/3 bg-gradient-to-r from-indigo-500 to-transparent rounded-full" />
+            <span className="absolute -bottom-2 left-0 h-[2px] w-1/3 bg-gradient-to-r from-[#BF1A1A] to-transparent rounded-full" />
           </h3>
           <br /><br /><br />
           <div className="grid lg:grid-cols-2 gap-8">
@@ -194,7 +185,7 @@ export function ProjectsSection() {
                   }`}
                   style={{ transitionDelay: `${500 + index * 100}ms` }}
                 >
-                  <Card className="border border-border bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/100 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <Card className="border border-[#E43636]/10 bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/70 group transition-all duration-500 hover-lift shadow-lg rounded-2xl " >
                     <div className="relative overflow-hidden rounded-t-2xl">
                       <Image
                         src={project.image || "/placeholder.svg"}
@@ -206,24 +197,24 @@ export function ProjectsSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                         <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary"                             className="bg-gradient-to-r from-indigo-400/30 via-purple-400/20 to-transparent border-2 border-indigo-400/60 hover:border-primary ring-2 ring-indigo-200/30 shadow-md transition-all duration-300 backdrop-blur-md hover:bg-primary/10 hover:text-primary"
+                          <Button size="sm" variant="secondary"                             className="bg-[#000] text-[#FFD41D] border-[#FFD41D]/30 text-xs sm:text-sm hover:bg-[#FFD41D]/10"
                           >
                             <ExternalLink className="h-4 w-4" />
                           </Button>
                         </a>
                         <a href={project.github_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary"       className="bg-gradient-to-r from-indigo-400/10 via-purple-400/10 to-transparent border-2 border-indigo-400/60 hover:border-primary ring-2 ring-indigo-200/30 shadow-md transition-all duration-300 backdrop-blur-md hover:bg-primary/10 hover:text-primary">
+                          <Button size="sm" variant="secondary"       className="bg-[#000] text-[#FFD41D] border-[#FFD41D]/30 text-xs sm:text-sm hover:bg-[#FFD41D]/10">
                             <Github className="h-4 w-4" />
                           </Button>
                         </a>
                       </div>
                     </div>
                     <div className="p-8">
-                      <h4 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">{project.title}</h4>
+                      <h4 className="text-xl font-bold mb-4 text-white-400 group-hover:text-[#FFA240] transition-colors duration-300">{project.title}</h4>
                       <p className="text-muted-foreground mb-6 leading-relaxed text-base">{project.description}</p>
                       <div className="flex flex-wrap gap-3">
                         {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="bg-muted text-muted-foreground border border-border hover:bg-primary/20 hover:text-primary transition-colors duration-200">
+                          <Badge key={tech} variant="secondary" className="bg-[#000]/40 text-[#FFA240] border border-[#FFA240] hover:bg-[#FFA240]/20 hover:text-[#FFA240] transition-colors duration-200">
                             {tech}
                           </Badge>
                         ))}
@@ -232,7 +223,7 @@ export function ProjectsSection() {
                   </Card>
                   
                   {/* Floating accent element */}
-                  <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border border-accent/30 bg-accent/10 backdrop-blur-sm transition-all duration-1000 animate-float transform" style={{ animationDelay: `${0.5 + index * 0.2}s` }} />
+                  <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border border-[#E43636]/30 bg-[#E43636]/20 backdrop-blur-sm  "  />
                 </div>
               ))}
           </div>
@@ -242,7 +233,7 @@ export function ProjectsSection() {
         <div data-sr>
         <h3 className="relative inline-block text-2xl font-semibold text-slate-900 dark:text-slate-100">
             Autres réalisations
-            <span className="absolute -bottom-2 left-0 h-[2px] w-1/4 bg-gradient-to-r from-sky-500 to-transparent rounded-full" />
+            <span className="absolute -bottom-2 left-0 h-[2px] w-1/4 bg-gradient-to-r from-[#BF1A1A] to-transparent rounded-full" />
           </h3>
    <br /><br /><br />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -256,7 +247,7 @@ export function ProjectsSection() {
                   }`}
                   style={{ transitionDelay: `${700 + index * 100}ms` }}
                 >
-                  <Card className="border border-border bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/95 group transition-all duration-500 hover-lift shadow-lg rounded-2xl animate-float" style={{ animationDelay: `${index * 0.15}s` }}>
+                  <Card className="border border-border bg-card/60 backdrop-blur-xl overflow-hidden hover:bg-card/95 group transition-all duration-500 hover-lift shadow-lg rounded-2xl " >
                     <div className="relative overflow-hidden rounded-t-2xl">
                       <Image
                         src={project.image || "/placeholder.svg"}
@@ -268,19 +259,19 @@ export function ProjectsSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
                         <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary" className="bg-card/80 border border-border hover:border-primary/50">
+                          <Button size="sm" variant="secondary" className="bg-[#000] text-[#FFD41D] border-[#FFD41D]/30 text-xs sm:text-sm hover:bg-[#FFD41D]/10">
                             <ExternalLink className="h-4 w-4" />
                           </Button>
                         </a>
                         <a href={project.github_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="secondary" className="bg-card/80 border border-border hover:border-primary/50">
+                          <Button size="sm" variant="secondary" className="bg-[#000] text-[#FFD41D] border-[#FFD41D]/30 text-xs sm:text-sm hover:bg-[#FFD41D]/10">
                             <Github className="h-4 w-4" />
                           </Button>
                         </a>
                       </div>
                     </div>
                     <div className="p-6">
-                      <h4 className="text-lg font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">{project.title}</h4>
+                      <h4 className="text-lg font-bold mb-3 text-foreground group-hover:text-muted-foreground/90  group-hover:underline-offset-4 group-hover:decoration-2 group-hover:decoration-[#BF1A1A] transition-colors duration-300">{project.title}</h4>
                       <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
@@ -300,7 +291,7 @@ export function ProjectsSection() {
                   </Card>
                   
                   {/* Floating accent element for smaller cards */}
-                  <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-2xl border border-secondary/20 bg-secondary/10 backdrop-blur-sm transition-all duration-1000 animate-float transform" style={{ animationDelay: `${0.5 + index * 0.15}s` }} />
+                  <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-2xl border border-secondary/20 bg-secondary/10 backdrop-blur-sm " />
                 </div>
               ))}
           </div>

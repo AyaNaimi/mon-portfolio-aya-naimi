@@ -166,26 +166,30 @@
 
   body {
     min-height: 100vh;
-    /* background:
-      linear-gradient(135deg,
-        color-mix(in oklch, var(--accent) 15%, transparent) 0%,
-        transparent 40%
-      ),
-      linear-gradient(225deg,
-        color-mix(in oklch, var(--secondary) 12%, transparent) 0%,
-        transparent 40%
-      ),
-      radial-gradient(
-        color-mix(in oklch, var(--muted-foreground) 8%, transparent) 0.5px,
-        transparent 0.5px
-      ); */
-    background-size: cover, cover, 4px 4px;
-    background-attachment: fixed, fixed, fixed;
-    /* background-color: var(--background); */
     position: relative;
     background-color: black;
-    
+    overflow-x: hidden;
+
+    /* Responsive background setup */
+    background-size: cover, cover, 4px 4px;
+    background-attachment: fixed, fixed, fixed;
+    background-position: center, center, 0 0;
+    background-repeat: no-repeat, no-repeat, repeat;
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      background-size: cover, cover, 8px 8px;
+      background-position: center, center, 0 0;
+      background-attachment: scroll, scroll, scroll;
+    }
+
+    @media (max-width: 640px) {
+      background-size: cover, cover, 16px 16px;
+      background-position: center, center, 0 0;
+      background-attachment: scroll, scroll, scroll;
+    }
   }
+
   
 
   
@@ -1620,4 +1624,55 @@
 
 .animate-slide-right {
   animation: slideRight 0.8s ease-out forwards;
+}
+
+
+
+
+
+
+
+
+
+/* ===== OUTLINE ANIMÉ TECH ===== */
+.outline-animated {
+  position: relative;
+  color: transparent;
+  -webkit-text-stroke: 2px #CC561E
+  ;
+  animation: strokePulse 3s ease-in-out infinite;
+}
+
+.outline-animated::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px #CC561E
+  ;
+  filter: blur(6px);
+  opacity: 0.6;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes strokePulse {
+  0%, 100% {
+    -webkit-text-stroke-width: 2px;
+    opacity: 0.9;
+  }
+  50% {
+    
+    -webkit-text-stroke-width: 3px;
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }

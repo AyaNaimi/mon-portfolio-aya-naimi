@@ -172,80 +172,30 @@ export function SkillsClient({ skillsData }: SkillsClientProps) {
 
   return (
     <section ref={sectionRef} id="skills" className="py-24 relative">
-     <div className="max-w-7xl mx-auto px-6">
-{/* ================= TITRE ULTRA PREMIUM ================= */}
-<div className="relative text-center mb-24">
-  {/* AURA SOFT */}
-  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-    <div
-      className="
-        w-[480px] h-[160px]
-        rounded-full
-        bg-gradient-to-r
-        from-indigo-500/20
-        via-sky-400/25
-        to-indigo-500/20
-        blur-[110px]
-        animate-aura-slow
-      "
-    />
-  </div>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* ================= TITRE OUTLINE ================= */}
+        <div className="relative text-center mb-24">
+        <h2
+  data-text="MES COMPETENCES"
+  className="
+    outline-animated
+    font-orbitron
+    text-5xl md:text-6xl lg:text-7xl
+    uppercase
+    tracking-widest
+    text-center
+  "
+>
+  Mes Compétences
+</h2>
 
-  {/* TITRE */}
-  <h2
-    className="
-      relative
-      inline-block
-      font-orbitron
-      text-4xl
-      md:text-5xl
-      lg:text-6xl
-      tracking-[0.28em]
-      uppercase
-      text-transparent
-      bg-clip-text
-      bg-gradient-to-r
-      from-slate-900
-      via-indigo-500
-      to-slate-900
-      dark:from-slate-100
-      dark:via-indigo-400
-      dark:to-slate-100
-      animate-title-float
-    "
-  >
-    Mes Compétences
 
-    {/* SCRIBBLE DESSINÉ */}
-    <svg
-      className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
-      viewBox="0 0 320 40"
-      fill="none"
-    >
-      <path
-        d="M10 28 C45 20, 90 34, 135 26 C180 18, 230 32, 270 25 C290 22, 305 30, 315 27"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="scribble-draw"
-      />
-    </svg>
-  </h2>
 
-  {/* LIGNE TECH FINE */}
-  <div className="mt-10 flex justify-center">
-    <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
-      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
-    </div>
-  </div>
-
-  {/* SOUS-TITRE */}
-  <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
-    Technologies & Expertise
-  </p>
-</div>
-
+          {/* SOUS-TITRE */}
+          <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+            Technologies & Expertise
+          </p>
+        </div>
 
         <div className="h-32 mb-20">
           <LogoLoop logos={techLogos} speed={120} fadeOut scaleOnHover />

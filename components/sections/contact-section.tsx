@@ -245,15 +245,15 @@ export function ContactSection() {
     <section ref={sectionRef} id="contact" className="pt-32 pb-20 relative overflow-hidden -mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Contactez-moi</span>
+          <div className="inline-flex items-center gap-2 bg-[#BF1A1A]/10 rounded-full px-4 py-2 mb-6">
+            <Sparkles className="w-4 h-4 text-[#BF1A1A]" />
+            <span className="text-sm font-medium text-[#BF1A1A]">Contactez-moi</span>
           </div>
                
        {/* ================= TITRE ULTRA PREMIUM ================= */}
 <div className="relative text-center mb-24">
   {/* AURA SOFT */}
-  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+  {/* <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
     <div
       className="
         w-[480px] h-[160px]
@@ -266,35 +266,24 @@ export function ContactSection() {
         animate-aura-slow
       "
     />
-  </div>
+  </div> */}
 
   {/* TITRE */}
   <h2
     className="
-      relative
-      inline-block
-      font-orbitron
-      text-4xl
-      md:text-5xl
-      lg:text-6xl
-      tracking-[0.28em]
-      uppercase
-      text-transparent
-      bg-clip-text
-      bg-gradient-to-r
-      from-slate-900
-      via-indigo-500
-      to-slate-900
-      dark:from-slate-100
-      dark:via-indigo-400
-      dark:to-slate-100
-      animate-title-float
-    "
+    outline-animated
+    font-orbitron
+    text-5xl md:text-6xl lg:text-7xl
+    uppercase
+    tracking-widest
+    text-center
+  "
+  data-text="Une idée de projet ?"
   >
 Une idée de projet ?
 
     {/* SCRIBBLE DESSINÉ */}
-    <svg
+    {/* <svg
       className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
       viewBox="0 0 320 40"
       fill="none"
@@ -307,15 +296,15 @@ Une idée de projet ?
         strokeLinejoin="round"
         className="scribble-draw"
       />
-    </svg>
+    </svg> */}
   </h2>
 
   {/* LIGNE TECH FINE */}
-  <div className="mt-10 flex justify-center">
+  {/* <div className="mt-10 flex justify-center">
     <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
     </div>
-  </div>
+  </div> */}
 
   {/* SOUS-TITRE */}
   <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">

@@ -20,7 +20,7 @@ interface Certificate {
 export function CertificatesSection() {
   const [certificates, setCertificates] = useState<Certificate[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [mouseX, setMouseX] = useState(0)
+  const [mouseX, setMouseX] = useState(0) // Not required anymore for inclinaison, but kept if used elsewhere
   const [isHovered, setIsHovered] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
@@ -111,20 +111,37 @@ export function CertificatesSection() {
         {/* ====== TITRE ====== */}
         <div className="relative text-center mb-24">
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-            <div className="w-[480px] h-[160px] rounded-full bg-gradient-to-r from-indigo-500/20 via-sky-400/25 to-indigo-500/20 blur-[110px] animate-aura-slow"/>
+            {/* <div className="w-[280px] h-[30px]
+        rounded-full
+       bg-gradient-to-r
+from-[#F5D2FF]
+
+via-[#7D0ECE]
+to-[#F5D2FF]
+        blur-[110px]
+        animate-aura-slow"/> */}
           </div>
-          <h2 className="relative inline-block font-orbitron text-4xl md:text-5xl lg:text-6xl tracking-[0.28em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-500 to-slate-900 dark:from-slate-100 dark:via-indigo-400 dark:to-slate-100 animate-title-float">
+          <h2  className="
+         outline-animated
+         font-orbitron
+         text-5xl md:text-6xl lg:text-7xl
+         uppercase
+         tracking-widest
+         text-center
+       "
+       data-text="MES CERTIFICATIONS"
+  >
             Mes Certifications
-            <svg className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6" viewBox="0 0 320 40" fill="none">
+            {/* <svg className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6" viewBox="0 0 320 40" fill="none">
               <path d="M10 28 C45 20, 90 34, 135 26 C180 18, 230 32, 270 25 C290 22, 305 30, 315 27"
                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="scribble-draw"/>
-            </svg>
+            </svg> */}
           </h2>
-          <div className="mt-10 flex justify-center">
+          {/* <div className="mt-10 flex justify-center">
             <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra"/>
             </div>
-          </div>
+          </div> */}
           <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
             Découvrez mes certifications et accomplissements qui témoignent de mon expertise et de ma passion pour l'innovation
           </p>
@@ -146,8 +163,10 @@ export function CertificatesSection() {
             if (offset < -half) offset += certificates.length
             if (offset > half) offset -= certificates.length
 
-            const rotateY = offset * 15 + (windowWidth >= 768 ? mouseX * 10 : 0)
-            const rotateX = offset * 5 + (windowWidth >= 768 ? -mouseX * 3 : 0)
+            // Désactiver inclinaison: On met rotateX et rotateY à 0
+            // (mouseX et windowWidth sont gardés si d'autres usages que l'inclinaison)
+            const rotateY = 0
+            const rotateX = 0
             const translateX = offset * translateFactor + (windowWidth >= 768 ? mouseX * 20 : 0)
             const translateZ = offset === 0 ? 0 : -Math.abs(offset) * 40
             const scale = offset === 0 ? 1 : Math.max(0.7, 1 - Math.abs(offset) * 0.15)
@@ -159,7 +178,8 @@ export function CertificatesSection() {
                 key={cert.id}
                 className="absolute top-0 transition-all duration-500 ease-out cursor-pointer group"
                 style={{
-                  transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`,
+                  // Ne plus incliner les cartes
+                  transform: `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale})`,
                   zIndex,
                   opacity,
                   width: cardWidth,
@@ -167,20 +187,20 @@ export function CertificatesSection() {
                   filter: `blur(${Math.abs(offset) * 1}px)`,
                 }}
               >
-                <Card className="h-full relative border border-transparent bg-card/59 backdrop-blur-xl shadow-lg shadow-indigo-500/30 overflow-hidden group-hover:shadow-2xl group-hover:shadow-indigo-400/60 hover:scale-[1.03] rounded-2xl transition-all duration-500">
+                <Card className="h-full relative border border-transparent bg-card/59 backdrop-blur-xl shadow-lg shadow-[#BF1A1A]/40 overflow-hidden group-hover:shadow-m group-hover:shadow-[#BF1A1A]/60 hover:scale-[1.03] rounded-2xl transition-all duration-500">
                   
                   {/* IMAGE + OVERLAY GLITCH */}
                   <div className={`relative ${isMobile ? 'h-40' : 'h-48'} overflow-hidden`}>
                     <Image src={cert.image_url || "/placeholder.svg"} alt={cert.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent mix-blend-overlay animate-glitch"/>
-                    <Badge className="absolute top-2 right-2 px-3 py-1 bg-gradient-to-r from-indigo-500 via-sky-400 to-indigo-500 text-white text-xs rounded-full shadow-lg animate-pulse flex items-center">
+                    <Badge className="absolute top-2 right-2 px-3 py-1 bg-gradient-to-b from-[#BF1A1A] via-[#CC561E] to-[#BF1A1A] text-white text-xs rounded-full shadow-lg  flex items-center">
                       <Award className="w-3 h-3 mr-1"/> Certifié
                     </Badge>
                   </div>
 
                   {/* HEADER */}
                   <CardHeader className={`${isMobile ? 'p-3 pb-1' : 'p-4 pb-2'}`}>
-                    <CardTitle className={`${isMobile ? 'text-base' : 'text-lg'} font-bold text-foreground group-hover:text-indigo-400 transition-colors duration-300 line-clamp-2`}>
+                    <CardTitle className={`${isMobile ? 'text-base' : 'text-lg'} font-bold text-foreground  transition-colors duration-300 line-clamp-2`}>
                       {cert.title}
                     </CardTitle>
                   </CardHeader>
@@ -197,7 +217,7 @@ export function CertificatesSection() {
                       <div className="space-y-2">
                         {cert.issuer && (
                           <div className={`flex items-center ${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>
-                            <Building className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-indigo-400"/>
+                            <Building className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#CC561E]"/>
                             <span className="font-medium">{cert.issuer}</span>
                           </div>
                         )}
@@ -213,12 +233,12 @@ export function CertificatesSection() {
                     {cert.certificate_url && (
                       <div className={`${isMobile ? 'mt-4' : 'mt-6'}`}>
                         <a href={cert.certificate_url} target="_blank" rel="noopener noreferrer">
-                          <div className="group relative w-full h-10 sm:h-12 bg-muted/50 border border-border rounded-xl flex items-center justify-center overflow-hidden transition-all duration-300 hover:border-indigo-400 hover:bg-indigo-900/10 hover:shadow-lg hover:scale-[1.02]">
-                            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 group-hover:text-indigo-500 transition-colors duration-300 z-10"/>
-                            <span className={`ml-2 sm:ml-3 ${isMobile ? 'text-xs' : 'text-sm'} font-medium text-foreground group-hover:text-indigo-500 transition-colors duration-300 z-10`}>
+                          <div className="group relative w-full h-10 sm:h-12 bg-gradient-to-b from-[#BF1A1A]/5 via-[#CC561E]/5 to-[#BF1A1A]/5 border border-[#CC561E]/10 rounded-xl flex items-center justify-center overflow-hidden transition-all duration-300 hover:border-[#BF1A1A]/30 hover:bg-[#CC561E]/5 hover:shadow-lg hover:scale-[1.02]">
+                            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5  transition-colors duration-300 z-10"/>
+                            <span className={`ml-2 sm:ml-3 ${isMobile ? 'text-xs' : 'text-sm'} font-medium text-foreground  transition-colors duration-300 z-10`}>
                               Voir le certificat
                             </span>
-                            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"/>
+                            {/* <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-b from-[#BF1A1A] via-[#CC561E] to-[#BF1A1A] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"/> */}
                           </div>
                         </a>
                       </div>

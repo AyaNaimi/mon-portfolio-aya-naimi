@@ -151,49 +151,38 @@ export function AboutClient({ aboutInfo, timeline }: AboutClientProps) {
        {/* ================= TITRE ULTRA PREMIUM ================= */}
 <div className="relative text-center mb-24">
   {/* AURA SOFT */}
-  <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-    {/* <div
+  {/* <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+    <div
       className="
-        w-[480px] h-[160px]
+        w-[280px] h-[30px]
         rounded-full
        bg-gradient-to-r
-from-emerald-100
-via-teal-100
-to-cyan-100
+from-[#F5D2FF]
+
+via-[#7D0ECE]
+to-[#F5D2FF]
         blur-[110px]
         animate-aura-slow
       "
-    /> */}
-  </div>
+    />
+  </div> */}
 
   {/* TITRE */}
   <h2
-    className="
-      relative
-      inline-block
-      font-orbitron
-      text-4xl
-      md:text-5xl
-      lg:text-6xl
-      tracking-[0.28em]
-      uppercase
-      text-transparent
-      bg-clip-text
-     bg-gradient-to-r
-from-[#2A1410]
-via-[#C56A3A]
-to-[#2A1410]
-
-      dark:from-slate-100
-      dark:via-indigo-400
-      dark:to-slate-100
-      animate-title-float
-    "
+         className="
+         outline-animated
+         font-orbitron
+         text-5xl md:text-6xl lg:text-7xl
+         uppercase
+         tracking-widest
+         text-center
+       "
+       data-text=" À PROPOS DE MOI"
   >
             À Propos De Moi
 
     {/* SCRIBBLE DESSINÉ */}
-    <svg
+    {/* <svg
       className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-[115%] h-6"
       viewBox="0 0 320 40"
       fill="none"
@@ -206,15 +195,15 @@ to-[#2A1410]
         strokeLinejoin="round"
         className="scribble-draw"
       />
-    </svg>
+    </svg> */}
   </h2>
 
   {/* LIGNE TECH FINE */}
-  <div className="mt-10 flex justify-center">
+  {/* <div className="mt-10 flex justify-center">
     <div className="relative h-px w-52 bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent overflow-hidden">
       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-scan-ultra" />
     </div>
-  </div>
+  </div> */}
 
   {/* SOUS-TITRE */}
   <p className="mt-8 text-[11px] md:text-xs uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
@@ -227,22 +216,11 @@ to-[#2A1410]
           <div
             className={`transition-all duration-1000 delay-400 order-2 lg:order-1 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
           >
-            <Card className="relative overflow-hidden rounded-xl bg-card/90 backdrop-blur-md transition-all duration-500 hover:shadow-xl">
+            <Card className="relative overflow-hidden rounded-xl bg-card backdrop-blur-md transition-all duration-500 hover:shadow-xl border border-[#BF1A1A]/30 ">
 
-              {/* animated border */}
-              <span className="pointer-events-none absolute inset-0 rounded-xl">
-                {/* layer 1 : slow wave */}
-                <span
-                  className="absolute inset-[-2px] rounded-xl bg-gradient-to-r from-purple-600/60 via-violet-500/60 to-purple-400/60 animate-borderWave"
-                />
-
-                {/* layer 2 : soft glow */}
-                <span
-                  className="absolute inset-[-3px] rounded-xl bg-gradient-to-r from-violet-500/30 via-purple-600/30 to-purple-400/30 blur-md animate-borderPulse"
-                />
-              </span>
               
-              <div className="relative z-10 m-[1px] rounded-xl bg-card/95 p-6 sm:p-8">
+              
+              <div className="relative z-10 m-[1px] rounded-xl bg-card  p-6 sm:p-8 ">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                   <Heart className="h-5 w-5 sm:h-6 sm:w-6 text-red-500" />
                   Ma passion
@@ -254,35 +232,35 @@ to-[#2A1410]
                 {/* Contact Info */}
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                    <MapPin className="h-5 w-5 text-purple-600 flex-shrink-0" />
+                    <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0" />
                     <span className="text-sm sm:text-base">{displayInfo.location}</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                    <Calendar className="h-5 w-5 text-violet-500 flex-shrink-0" />
+                    <Calendar className="h-5 w-5 text-yellow-500 flex-shrink-0" />
                     <span className="text-sm sm:text-base">{displayInfo.experience_years}+ années d'expérience</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                    <Code className="h-5 w-5 text-purple-400 flex-shrink-0" />
+                    <Code className="h-5 w-5 text-green-400 flex-shrink-0" />
                     <span className="text-sm sm:text-base">{displayInfo.projects_count}+ projets réalisés</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                    <Coffee className="h-5 w-5 text-purple-400 flex-shrink-0" />
+                    <Coffee className="h-5 w-5 text-orange-400 flex-shrink-0" />
                     <span className="text-sm sm:text-base">Fan de café artisanal</span>
                   </div>
                 </div>
 
                 {/* Skills Tags */}
                 <div className="flex flex-wrap gap-2 mb-6 justify-center lg:justify-start">
-                  <Badge variant="secondary" className="bg-purple-600/20 text-purple-600 border-purple-600/30 text-xs sm:text-sm">
+                  <Badge variant="secondary" className="bg-[#000] text-[#FFD41D] border-[#FFD41D]/30 text-xs sm:text-sm hover:bg-[#FFD41D]/10">
                     React Expert
                   </Badge>
-                  <Badge variant="secondary" className="bg-violet-500/20 text-violet-500 border-violet-500/30 text-xs sm:text-sm">
+                  <Badge variant="secondary" className="bg-[#000] text-[#FFA240] border-[#FFA240]/30 text-xs sm:text-sm hover:bg-[#FFA240]/10">
                     Node.js
                   </Badge>
-                  <Badge variant="secondary" className="bg-purple-400/20 text-purple-400 border-purple-400/30 text-xs sm:text-sm">
+                  <Badge variant="secondary" className="bg-[#000] text-[#FF4646] border-[#FF4646]/30 text-xs sm:text-sm hover:bg-[#FF4646]/10">
                     TypeScript
                   </Badge>
-                  <Badge variant="secondary" className="bg-violet-600/20 text-violet-600 border-violet-600/30 text-xs sm:text-sm">
+                  <Badge variant="secondary" className="bg-[#000] text-[#AA2B1D] border-[#AA2B1D]/30 text-xs sm:text-sm hover:bg-[#AA2B1D]/10">
                     Next.js
                   </Badge>
                 </div>
@@ -290,7 +268,7 @@ to-[#2A1410]
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-violet-500 hover:shadow-lg transition-all duration-300"
+                    className="flex-1 bg-[#BF1A1A]/60 text-slate-300 hover:shadow-[0_0_15px_#BF1A1A] hover:bg-[#BF1A1A]/80 transition-all duration-300"
                     onClick={handleDownloadCV}
                     disabled={isLoadingCV}
                   >
@@ -312,11 +290,12 @@ to-[#2A1410]
             }`}
           >
             <h3 className="text-xl sm:text-2xl font-bold mb-8 sm:mb-12 text-foreground flex items-center gap-2 justify-center lg:justify-start">
-              <Award className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
+              <Award className="h-5 w-5 sm:h-6 sm:w-6 text-[#BF1A1A]" />
               Mon parcours
             </h3>
 
             <AdvancedTimeline
+            
               timeline={
                 timeline.length > 0
                   ? timeline
