@@ -1,0 +1,20 @@
+stages:
+  - test
+  - build
+
+job_test:
+  stage: test
+  image: node:alpine
+  script:
+    - npm test
+
+job_build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  script:
+    - docker build -t $DOCKER_USERNAME/atelier-simple:v1 .
+    - docker push $DOCKER_USERNAME/atelier-simple:v1
