@@ -1,0 +1,49 @@
+# Robots.txt for Portfolio Website
+# https://mon-portfolio-aya-naimi.vercel.app/robots.txt
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mon-portfolio-aya-naimi.vercel.app/sitemap.xml
+
+# Disallow admin and API routes from being indexed
+Disallow: /admin/
+Disallow: /api/
+
+# Allow static assets
+Allow: /_next/
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.avif
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block any potential spam bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

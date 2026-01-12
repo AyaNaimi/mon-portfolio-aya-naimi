@@ -1,0 +1,302 @@
+/* Styles pour les titres stylés */
+
+/* Formes géométriques */
+.clip-circle {
+  clip-path: circle(40% at 50% 50%);
+}
+
+.clip-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.clip-hexagon {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+}
+
+.clip-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* Animation de brillance (shimmer) */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Effet de pulsation pour les titres glow */
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.6));
+  }
+}
+
+.glow-title {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Effet de particules flottantes */
+@keyframes float-particle {
+  0% {
+    transform: translateY(0px) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+}
+
+.particle-float {
+  animation: float-particle 4s ease-out infinite;
+}
+
+/* Effet de typing pour les titres */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+.typewriter-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid currentColor;
+  animation: 
+    typing 3s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* Effet de rotation 3D */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Effet de vague (wave) */
+@keyframes wave-in {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wave-char {
+  display: inline-block;
+  animation: wave-in 0.6s ease-out forwards;
+}
+
+/* Gradient animé pour les titres */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Effet de néon pour les titres */
+@keyframes neon-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor;
+  }
+}
+
+.neon-title {
+  animation: neon-glow 2s ease-in-out infinite alternate;
+}
+
+/* Effet de perspective 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-3d {
+  transform-style: preserve-3d;
+}
+
+/* Styles responsifs pour les grands titres */
+@media (max-width: 768px) {
+  .title-responsive-sm {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 640px) {
+  .title-responsive-xs {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+}
+
+/* Effet de glass morphisme pour les titres */
+.glass-title {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+/* Effet de relief (emboss) */
+.emboss-title {
+  text-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.1),
+    2px 2px 0px rgba(0, 0, 0, 0.05),
+    -1px -1px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* Effet de contour (outline) */
+.outline-title {
+  -webkit-text-stroke: 1px currentColor;
+  color: transparent;
+  text-shadow: none;
+}
+
+.outline-title:hover {
+  color: currentColor;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Animation de bounce pour les titres */
+@keyframes title-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-title {
+  animation: title-bounce 2s infinite;
+}
+
+/* Effet de typewriter avec curseur personnalisé */
+.typewriter-container {
+  position: relative;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Effet de morphing pour les titres */
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+.morph-background {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* Styles pour les gros titres avec espacement */
+.title-large {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.title-massive {
+  font-size: clamp(4rem, 12vw, 12rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+
+/* Effet de parallax pour les titres */
+.parallax-title {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Animation d'apparition par lettres */
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.letter-appear {
+  display: inline-block;
+  transform-origin: bottom;
+  animation: letter-appear 0.6s ease-out forwards;
+}
